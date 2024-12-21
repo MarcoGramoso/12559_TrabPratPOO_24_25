@@ -3,11 +3,6 @@
 //    <author>Marco Gramoso</author>​
 //-----------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TrabalhoPOO_12559_Fase1.Utilitários;
 
 namespace TrabalhoPOO_12559_Fase1.Modelos
@@ -15,64 +10,89 @@ namespace TrabalhoPOO_12559_Fase1.Modelos
     public class INEM
     {
         #region Private Properties
-        private string baseINEM { get; set; }
-        private List<Viatura> viaturas = [];
-        private List<Medico> medicos = [];
-        private List<Enfermeiro> enfermeiros = [];
+
+        /// <summary>
+        /// Aplicação do Singleton
+        /// </summary>
+        private static INEM? _instance;
+        private static readonly object _lock = new object();
+
         #endregion
 
         #region Public Properties
-        public string BaseINEM
-        {
-            get => baseINEM;
-            set => baseINEM = value;
-        }
-        public List<Viatura> Viaturas
-        {
-            get => viaturas;
-            set => viaturas.AddRange(value);
-        }
-        public List<Medico> Medicos
 
+        public List<Viatura> Viaturas { get; set; }
+        public List<Medico> Medicos { get; set; }
+        public List<Enfermeiro> Enfermeiros { get; set; }
+
+        /// <summary>
+        /// Singleton
+        /// </summary>
+        public static INEM Instance
         {
-            get => medicos;
-            set => medicos.AddRange(value);
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new INEM();
+                        }
+                    }
+                }
+                return _instance;
+            }
+
         }
 
-        public List <Enfermeiro> Enfermeiros
-        {
-            get => enfermeiros;
-            set => enfermeiros.AddRange(value);
-        }
 
         #endregion
 
         #region Constructors
-        public INEM(string baseINEM)
+        /// <summary>
+        /// Construtor de INEM
+        /// </summary>
+        public INEM()
         {
-            this.BaseINEM = baseINEM;
+            Viaturas = new List<Viatura>();
+            Medicos = new List<Medico>();
+            Enfermeiros = new List<Enfermeiro>();
         }
         #endregion
-       
+
         #region Methods
         public void AddViatura(Viatura viaturas)
         {
-            Viaturas.Add(viaturas);
-            string tipoVeiculo = Utilitarios.tipoVeiculo(viaturas.tipoEquipamento);
-            Console.WriteLine($"{tipoVeiculo} de matricula {viaturas.Matricula} adicionada à base INEM {baseINEM}.");
+            if (!Viaturas.Exists(v => v.Matricula == viaturas.Matricula))
+            {
+                Viaturas.Add(viaturas);
+                string tipoVeiculo = Utilitarios.tipoVeiculo(viaturas.TipoEquipamento);
+            }
+
         }
         public void AddMedico(Medico medicos)
         {
-            Medicos.Add(medicos);
-            Console.WriteLine($"{medicos.Nome} adicionado à base INEM {baseINEM}");
+            if (!Medicos.Exists(m => m.Nome == medicos.Nome))
+            {
+                if (!Medicos.Exists(d => d.DataNasc == medicos.DataNasc))
+                {
+                    Medicos.Add(medicos);
+                }
+            }
         }
 
         public void AddEnfermeiro(Enfermeiro enfermeiros)
         {
-            Enfermeiros.Add(enfermeiros);
-            Console.WriteLine($"{enfermeiros.Nome} adicionado à base INEM {baseINEM}");
+            if (!Enfermeiros.Exists(m => m.Nome == enfermeiros.Nome))
+            {
+                if (!Enfermeiros.Exists(d => d.DataNasc == enfermeiros.DataNasc))
+                {
+                    Enfermeiros.Add(enfermeiros);
+                }
+            }
         }
-
         #endregion
     }
 }

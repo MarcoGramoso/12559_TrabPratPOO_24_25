@@ -1,34 +1,75 @@
-﻿//-----------------------------------------------------------------​
-//    <version>0.1</version>​
-//    <author>Marco Gramoso</author>​
+﻿//-----------------------------------------------------------------
+//    <version>0.1</version>
+//    <author>Marco Gramoso</author>
 //-----------------------------------------------------------------
 
 using System.ComponentModel;
 
 namespace TrabalhoPOO_12559_Fase1.Enums
 {
+    /// <summary>
+    /// Representa os diferentes tipos de equipamentos utilizados nas ocorrências.
+    /// </summary>
     public enum TipoEquipamento
     {
-        [Description ("Ambulância")]
+        /// <summary>
+        /// Ambulância para transporte de vítimas.
+        /// </summary>
+        [Description("Ambulância")]
         Ambulancia,
-        [Description ("Veículo Auto de Combate a Incêndios")]
+
+        /// <summary>
+        /// Veículo auto de combate a incêndios.
+        /// </summary>
+        [Description("Veículo Auto de Combate a Incêndios")]
         ViaturaIncendio,
-        [Description ("Veículo Auto de Desencarceramento")]
+
+        /// <summary>
+        /// Veículo auto de desencarceramento.
+        /// </summary>
+        [Description("Veículo Auto de Desencarceramento")]
         ViaturaDesencarceramento,
-        [Description ("Helicoptero de combate a incêndios")]
+
+        /// <summary>
+        /// Helicóptero de combate a incêndios.
+        /// </summary>
+        [Description("Helicóptero de combate a incêndios")]
         HeliInc,
-        [Description ("Helicoptero de socorro")]
+
+        /// <summary>
+        /// Helicóptero de socorro.
+        /// </summary>
+        [Description("Helicóptero de socorro")]
         HeliSoc,
-        [Description ("Barco Salva vidas")]
+
+        /// <summary>
+        /// Barco de salvamento de vidas.
+        /// </summary>
+        [Description("Barco Salva vidas")]
         Barco,
-        [Description ("Moto")]
+
+        /// <summary>
+        /// Moto utilizada para resgates rápidos.
+        /// </summary>
+        [Description("Moto")]
         Moto,
-        [Description ("Mota de água")] 
-        MotodeAgua,
-        [Description ("Viatura Médica")]
+
+        /// <summary>
+        /// Mota de água para resgates em áreas aquáticas.
+        /// </summary>
+        [Description("Mota de água")]
+        MotaDeAgua,
+
+        /// <summary>
+        /// Viatura médica para atendimento e transporte de pacientes.
+        /// </summary>
+        [Description("Viatura Médica")]
         ViaturaMedica,
-        [Description ("Outro veículo")]
+
+        /// <summary>
+        /// Outros tipos de veículos não especificados.
+        /// </summary>
+        [Description("Outro veículo")]
         Outros
     }
 }
-

@@ -1,22 +1,39 @@
-﻿//-----------------------------------------------------------------​
-//    <version>0.1</version>​
-//    <author>Marco Gramoso</author>​
+﻿//-----------------------------------------------------------------
+//    <version>0.1</version>
+//    <author>Marco Gramoso</author>
 //-----------------------------------------------------------------
 
 using System.ComponentModel;
 
 namespace TrabalhoPOO_12559_Fase1.Enums
 {
+    /// <summary>
+    /// Representa os diferentes estados possíveis de uma ocorrência.
+    /// </summary>
     public enum StatusOcorrencia
     {
-        [Description ("Despacho de Meios")]
-        Despachodemeios,
-        [Description ("Em aberto")]
+        /// <summary>
+        /// Ocorrência com meios despachados.
+        /// </summary>
+        [Description("Despacho de Meios")]
+        DespachoDeMeios,
+
+        /// <summary>
+        /// Ocorrência ainda não resolvida.
+        /// </summary>
+        [Description("Em aberto")]
         Aberta,
-        [Description ("Em curso")]
+
+        /// <summary>
+        /// Ocorrência em andamento.
+        /// </summary>
+        [Description("Em curso")]
         EmCurso,
-        [Description ("Fechada")]
+
+        /// <summary>
+        /// Ocorrência encerrada.
+        /// </summary>
+        [Description("Fechada")]
         Fechada
     }
 }
-
